@@ -8,7 +8,11 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" href="img/favicon-smile.ico" />
+    <link rel="icon" href="favicon-smile.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       body {
@@ -18,57 +22,26 @@
         background-color: aquamarine;
         font-family: "Open Sans", sans-serif;
       }
+
+      .form,
+      .greetings {
+        display: none;
+      }
+      .showing {
+        display: block;
+      }
     </style>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="icon" href="img/favicon-smile.ico" />
+    <script src="clock.js" defer></script>
+    <script src="greeting.js" defer></script>
   </head>
   <body>
-    <div class="js-clock">
+    <div class="js-clock ">
       <h1>00:00</h1>
     </div>
+    <form class="js-form form">
+      <input type="text" placeholder="what is your name?" />
+    </form>
 
-    <script>
-      /* part1 */
-      document.write("part.1");
-      console.log("part1");
-
-      const clockContainer = document.querySelector(".js-clock");
-      const clockTitle = clockContainer.querySelector("h1");
-      // 같은뜻
-      // const clockContainer = document.querySelector('.js-clock'),
-      //  clockTitle= clockContainer.querySelector('h1');
-
-      function getTime() {
-        const date = new Date();
-        const minutes = date.getMinutes();
-        const hours = date.getHours();
-        const seconds = date.getSeconds();
-
-        // clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
-
-        //Q: 숫자 10보다 작을때 1,2,3,4....말고, 01,02,03.... 이렇게 만들기
-        // ternary operator (간단한 if)
-        // 10보다 작으면 `0${}`:
-        //        크면    `${}`
-        // ${seconds < 10 ? `0${seconds}` : seconds}`;
-        clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:        ${
-          minutes < 10 ? `0${minutes}` : minutes
-        }:        ${seconds < 10 ? `0${seconds}` : seconds}`;
-      }
-
-      // 함수안에 시간을 가져오고,
-      // 1초마다 갱신
-      function init() {
-        getTime();
-        setInterval(getTime, 1000);
-      }
-
-      init();
-    </script>
+    <h4 class="js-greetings greetings"></h4>
   </body>
 </html>
