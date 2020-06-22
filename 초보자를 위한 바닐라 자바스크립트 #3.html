@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>노마드코더</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="img/favicon-smile.ico" />
+
+    <style>
+      body {
+        font-size: 3rem;
+      }
+      h1 {
+        background-color: aquamarine;
+        font-family: "Open Sans", sans-serif;
+      }
+    </style>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="img/favicon-smile.ico" />
+  </head>
+  <body>
+    <div class="js-clock">
+      <h1>00:00</h1>
+    </div>
+
+    <script>
+      /* part1 */
+      document.write("part.1");
+      console.log("part1");
+
+      const clockContainer = document.querySelector(".js-clock");
+      const clockTitle = clockContainer.querySelector("h1");
+      // 같은뜻
+      // const clockContainer = document.querySelector('.js-clock'),
+      //  clockTitle= clockContainer.querySelector('h1');
+
+      function getTime() {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const hours = date.getHours();
+        const seconds = date.getSeconds();
+
+        // clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
+
+        //Q: 숫자 10보다 작을때 1,2,3,4....말고, 01,02,03.... 이렇게 만들기
+        // ternary operator (간단한 if)
+        // 10보다 작으면 `0${}`:
+        //        크면    `${}`
+        // ${seconds < 10 ? `0${seconds}` : seconds}`;
+        clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:        ${
+          minutes < 10 ? `0${minutes}` : minutes
+        }:        ${seconds < 10 ? `0${seconds}` : seconds}`;
+      }
+
+      // 함수안에 시간을 가져오고,
+      // 1초마다 갱신
+      function init() {
+        getTime();
+        setInterval(getTime, 1000);
+      }
+
+      init();
+    </script>
+  </body>
+</html>
